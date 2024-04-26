@@ -1,9 +1,35 @@
 package com.example.todolist
 
-data class Todo(
+data class Todo(private var title : String, private var isChecked : Boolean = false)
+{
+     fun getTitle(): String
+    {
 
-    val title : String,
-    var isChecked : Boolean = false
+        return this.title
+
+    }
+
+     fun setTitle(title: String)
+    {
+
+        this.title = title
+
+    }
+
+     fun getisChecked() : Boolean
+    {
+
+        return this.isChecked
+
+    }
+
+     fun setisChecked(isChecked: Boolean)
+    {
+
+        this.isChecked = isChecked
+
+    }
 
 
-)
+
+}
