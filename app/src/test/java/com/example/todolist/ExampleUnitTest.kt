@@ -11,7 +11,43 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun testGetSetTitle() {
+        val todo = Todo("Example Todo")
+        assertEquals("Example Todo", todo.getTitle())
+
+        todo.setTitle("Updated Todo")
+        assertEquals("Updated Todo", todo.getTitle())
+    }
+
+    @Test
+    fun testGetSetIsChecked() {
+        val todo = Todo("Example Todo")
+        assertFalse(todo.getisChecked())
+
+        todo.setisChecked(true)
+        assertTrue(todo.getisChecked())
+    }
+}
+
+class TodoAdapterTest {
+
+    @Test
+    fun testAddTodo() {
+        val adapter = TodoAdapter(mutableListOf())
+        val todo = Todo("Example Todo")
+        adapter.addTodo(todo)
+        assertEquals(1, adapter.itemCount)
+    }
+
+    @Test
+    fun testDeleteDoneTodos() {
+        val todos = mutableListOf(
+            Todo("Todo 1"),
+            Todo("Todo 2").apply { setisChecked(true) },
+            Todo("Todo 3").apply { setisChecked(true) }
+        )
+        val adapter = TodoAdapter(todos)
+        adapter.deleteDoneTodos()
+        assertEquals(1, adapter.itemCount)
     }
 }
