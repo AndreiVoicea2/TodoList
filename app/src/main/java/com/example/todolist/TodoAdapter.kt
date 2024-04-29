@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-
+import java.util.Locale
 
 
 class TodoAdapter(private val todos: MutableList<Todo>) : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>()
@@ -22,8 +22,33 @@ class TodoAdapter(private val todos: MutableList<Todo>) : RecyclerView.Adapter<T
 
     fun addTodo(todo : Todo)
     {
-        todos.add(todo)
-        notifyItemInserted(todos.size - 1)
+        var sameTitle = false
+
+        for(eachTodo: Todo in todos)
+        {
+
+            if(todo.getTitle().trim().lowercase(Locale.getDefault()) == eachTodo.getTitle().trim().lowercase(Locale.getDefault()))
+            {
+
+                sameTitle = true
+
+            }
+
+            if(sameTitle)
+            {
+
+                break
+
+            }
+
+        }
+
+        if(!sameTitle) {
+
+            todos.add(todo)
+            notifyItemInserted(todos.size - 1)
+
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")

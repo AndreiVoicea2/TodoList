@@ -2,6 +2,12 @@ package com.example.todolist
 
 data class Todo(private var title : String, private var isChecked : Boolean = false)
 {
+    init{
+
+        setTitle(title)
+        setisChecked(isChecked)
+
+    }
      fun getTitle(): String
     {
 
@@ -9,10 +15,19 @@ data class Todo(private var title : String, private var isChecked : Boolean = fa
 
     }
 
-     fun setTitle(title: String)
+    fun setTitle(title: String)
     {
+        if(title.isBlank())
+        {
 
-        this.title = title
+            this.title = "Default_Title"
+
+        }else
+        {
+
+            this.title = title
+
+        }
 
     }
 

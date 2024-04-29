@@ -28,14 +28,9 @@ class MainActivity : ComponentActivity() {
             val etTodoTitle: EditText = findViewById(R.id.etTodoTitle)
             val todoTitle = etTodoTitle.text.toString()
 
-            if(todoTitle.isNotEmpty())
-            {
-
-                val todo = Todo(todoTitle)
-                todoAdapter.addTodo(todo)
-                etTodoTitle.text.clear()
-
-            }
+            val todo = Todo(todoTitle)
+            todoAdapter.addTodo(todo)
+            etTodoTitle.text.clear()
 
 
         }
