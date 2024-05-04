@@ -2,6 +2,8 @@ package com.example.todolist
 
 data class Todo(private var title : String, private var isChecked : Boolean = false)
 {
+
+    constructor() : this("", false)
     init{
 
         setTitle(title)
