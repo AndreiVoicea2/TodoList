@@ -31,16 +31,8 @@
         android:layout_height="wrap_content"
         android:text="Add Todo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnDeleteDoneTodos"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btnDeleteDoneTodos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete Done"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
