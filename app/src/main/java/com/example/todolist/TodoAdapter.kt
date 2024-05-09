@@ -16,6 +16,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import org.w3c.dom.Text
+import java.text.SimpleDateFormat
 import java.util.Locale
 import kotlin.concurrent.thread
 
@@ -100,8 +102,12 @@ class TodoAdapter(private val todos: MutableList<Todo>) : RecyclerView.Adapter<T
         holder.itemView.apply{
 
             val tvTodoTitle: TextView = findViewById(R.id.tvTodoTitle)
+            val tvTodoDate: TextView = findViewById(R.id.tvTodoDate)
             val cbDone: CheckBox = findViewById(R.id.cbDone)
             tvTodoTitle.text = curTodo.getTitle()
+            val myFormat = "dd-MM-yyyy"
+            val sdf = SimpleDateFormat(myFormat, Locale.UK)
+            tvTodoDate.setText(sdf.format(curTodo.getDate()))
             cbDone.isChecked = curTodo.getisChecked()
 
 
