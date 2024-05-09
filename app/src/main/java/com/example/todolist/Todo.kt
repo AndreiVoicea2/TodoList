@@ -1,13 +1,20 @@
 package com.example.todolist
 
-data class Todo(private var title : String, private var isChecked : Boolean = false)
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
+import java.util.regex.Pattern
+
+data class Todo(private var title : String, private var date:Date = Calendar.getInstance().time, private var isChecked : Boolean = false)
 {
 
-    constructor() : this("", false)
+    constructor() : this("")
     init{
 
         setTitle(title)
         setisChecked(isChecked)
+        setDate(date)
 
     }
      fun getTitle(): String
@@ -24,10 +31,12 @@ data class Todo(private var title : String, private var isChecked : Boolean = fa
 
             this.title = "Default_Title"
 
+
         }else
         {
 
             this.title = title
+
 
         }
 
@@ -47,6 +56,19 @@ data class Todo(private var title : String, private var isChecked : Boolean = fa
 
     }
 
+    fun getDate(): Date
+    {
+
+        return this.date
+
+    }
+
+    fun setDate(date: Date)
+    {
+
+        this.date = date
+
+    }
 
 
 }
