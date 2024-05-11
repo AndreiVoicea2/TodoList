@@ -2,4 +2,7 @@
 <resources>
 
     <style name="Theme.TodoList" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="SplashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar" />
+
 </resources>

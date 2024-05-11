@@ -4,23 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#387047"
     tools:context=".MainActivity">
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTodoItems"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddTodo"
+        android:background="#33994E"
+        app:layout_constraintBottom_toTopOf="@+id/etTodoTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="1dp" />
-
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/etTodoTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="casual"
         android:hint="Enter Todo Title"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/datePickerButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +38,10 @@
         android:id="@+id/btnAddTodo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#293D2E"
+        android:fontFamily="casual"
         android:text="Add Todo"
+        android:textColor="#F6F6F6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
@@ -39,10 +50,13 @@
         android:id="@+id/datePickerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#293D2E"
+        android:fontFamily="casual"
+        android:onClick=""
         android:text="Pick Date"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnAddTodo"
-        android:onClick=""
         tools:ignore="MissingConstraints" />
 
 
