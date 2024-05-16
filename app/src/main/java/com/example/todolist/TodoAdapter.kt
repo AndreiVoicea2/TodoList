@@ -1,13 +1,9 @@
 package com.example.todolist
 
-import android.annotation.SuppressLint
-import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -16,30 +12,27 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import java.util.Locale
-import kotlin.concurrent.thread
 
 
-class TodoAdapter(private val todos: MutableList<Todo>) : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>()
+object TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>()
 {
-    class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
+    private val todos: MutableList<Todo> = mutableListOf()
     private var  database: DatabaseReference = FirebaseDatabase.getInstance().getReference("Todos")
+    class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder
     {
        return TodoViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_todo, parent, false))
     }
 
-    fun LoadFromDataBase()
+    fun loadFromDataBase()
     {
 
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 todos.clear()
-
 
                 for (data in snapshot.children) {
                     val todo = data.getValue(Todo::class.java)
@@ -107,12 +100,12 @@ class TodoAdapter(private val todos: MutableList<Todo>) : RecyclerView.Adapter<T
             tvTodoTitle.text = curTodo.getTitle()
             val myFormat = "dd-MM-yyyy"
             val sdf = SimpleDateFormat(myFormat, Locale.UK)
-            tvTodoDate.setText(sdf.format(curTodo.getDate()))
+            tvTodoDate.text = sdf.format(curTodo.getDate())
             cbDone.isChecked = curTodo.getisChecked()
 
 
 
-            cbDone.setOnCheckedChangeListener { _, isChecked ->
+            cbDone.setOnCheckedChangeListener { _, _ ->
 
 
                 database.child(curTodo.getTitle()).removeValue()

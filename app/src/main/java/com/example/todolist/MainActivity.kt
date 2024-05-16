@@ -10,26 +10,24 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.Calendar
 
 
-class MainActivity : ComponentActivity() {
 
+class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val rvTodoItems: RecyclerView = findViewById(R.id.rvTodoItems)
-        val todoAdapter = TodoAdapter(mutableListOf())
+            val rvTodoItems: RecyclerView = findViewById(R.id.rvTodoItems)
 
-        rvTodoItems.adapter = todoAdapter
-        rvTodoItems.layoutManager = LinearLayoutManager(this)
+            rvTodoItems.adapter = TodoAdapter
+            rvTodoItems.layoutManager = LinearLayoutManager(this)
 
-        todoAdapter.LoadFromDataBase()
+            setupUI()
 
-        setupUI(todoAdapter)
     }
 
-    private fun setupUI(todoAdapter: TodoAdapter) {
+    private fun setupUI() {
 
         val btnAddTodo: Button = findViewById(R.id.btnAddTodo)
         val dateButton: Button = findViewById(R.id.datePickerButton)
@@ -50,7 +48,7 @@ class MainActivity : ComponentActivity() {
             val todoTitle = etTodoTitle.text.toString()
             val todo = Todo(todoTitle, myCalendar.time)
 
-            todoAdapter.addTodo(todo)
+            TodoAdapter.addTodo(todo)
             etTodoTitle.text.clear()
         }
     }

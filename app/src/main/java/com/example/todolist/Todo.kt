@@ -1,10 +1,8 @@
 package com.example.todolist
 
-import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
-import java.util.Locale
-import java.util.regex.Pattern
+
 
 data class Todo(private var title : String, private var date:Date = Calendar.getInstance().time, private var isChecked : Boolean = false)
 {
