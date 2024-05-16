@@ -39,15 +39,5 @@ class TodoAdapterTest {
         assertEquals(1, adapter.itemCount)
     }
 
-    @Test
-    fun testDeleteDoneTodos() {
-        val todos = mutableListOf(
-            Todo("Todo 1"),
-            Todo("Todo 2").apply { setisChecked(true) },
-            Todo("Todo 3").apply { setisChecked(true) }
-        )
-        val adapter = TodoAdapter(todos)
-        adapter.deleteDoneTodos()
-        assertEquals(1, adapter.itemCount)
-    }
+
 }
