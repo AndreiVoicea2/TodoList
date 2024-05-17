@@ -97,6 +97,8 @@ object TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>()
             val tvTodoTitle: TextView = findViewById(R.id.tvTodoTitle)
             val tvTodoDate: TextView = findViewById(R.id.tvTodoDate)
             val cbDone: CheckBox = findViewById(R.id.cbDone)
+
+
             tvTodoTitle.text = curTodo.getTitle()
             val myFormat = "dd-MM-yyyy"
             val sdf = SimpleDateFormat(myFormat, Locale.UK)

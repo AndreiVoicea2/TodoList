@@ -33,10 +33,10 @@ class TodoAdapterTest {
 
     @Test
     fun testAddTodo() {
-        val adapter = TodoAdapter(mutableListOf())
+
         val todo = Todo("Example Todo")
-        adapter.addTodo(todo)
-        assertEquals(1, adapter.itemCount)
+        TodoAdapter.addTodo(todo)
+        assertEquals(1, TodoAdapter.itemCount)
     }
 
 
